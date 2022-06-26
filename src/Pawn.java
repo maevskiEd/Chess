@@ -3,6 +3,28 @@ public class Pawn extends ChessPiece {
         super(color);
     }
 
+    public static void main(String[] args) {
+        Pawn p = new Pawn("White");
+        ChessBoard c = new ChessBoard("Player");
+        System.out.println(p.canMoveToPosition(c, 1, 1, 2, 1));
+        System.out.println(p.canMoveToPosition(c, 1, 1, 3, 1));
+        System.out.println(p.canMoveToPosition(c, 2, 2, 3, 1));
+        System.out.println(p.canMoveToPosition(c, 2, 2, 3, 2));
+        System.out.println(p.canMoveToPosition(c, 2, 2, 3, 3));
+        System.out.println(p.canMoveToPosition(c, 2, 2, 4, 2));
+        System.out.println(p.canMoveToPosition(c, 2, 2, 5, 2));
+        System.out.println(p.canMoveToPosition(c, 2, 2, 2, 2));
+        System.out.println(p.canMoveToPosition(c, 2, 2, 3, 4));
+        Pawn pBlack = new Pawn("Black");
+        System.out.println("Black");
+        System.out.println(pBlack.canMoveToPosition(c, 6, 1, 5, 1));
+        System.out.println(pBlack.canMoveToPosition(c, 6, 1, 4, 1));
+        System.out.println(pBlack.canMoveToPosition(c, 6, 1, 4, 2));
+        System.out.println(pBlack.canMoveToPosition(c, 6, 1, 5, 2));
+        System.out.println(pBlack.canMoveToPosition(c, 6, 1, 5, 1));
+        System.out.println(pBlack.canMoveToPosition(c, 6, 2, 5, 1));
+    }
+
     @Override
     public String getColor() {
         return super.color;
