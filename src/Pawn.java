@@ -38,7 +38,7 @@ public class Pawn extends ChessPiece {
         if (!isRunningInPlace(iDeltaX, iDeltaY) && chessBoard.checkPos(toLine)
                 && chessBoard.checkPos(toColumn)) {
             if ((isSecondLine(line) && iDeltaY == 2 && iDeltaX == 0)
-                    || (iDeltaY == 1 && (iDeltaX == 0 || Math.abs(iDeltaX) == 1))) return true;
+                    || (iDeltaY == 1 && iDeltaX == 0)) return true;
             else return false;
         } else return false;
     }
