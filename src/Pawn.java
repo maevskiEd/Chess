@@ -3,6 +3,7 @@ public class Pawn extends ChessPiece {
         super(color);
     }
 
+/*
     public static void main(String[] args) {
         Pawn p = new Pawn("White");
         ChessBoard c = new ChessBoard("Player");
@@ -24,6 +25,7 @@ public class Pawn extends ChessPiece {
         System.out.println(pBlack.canMoveToPosition(c, 6, 1, 5, 1));
         System.out.println(pBlack.canMoveToPosition(c, 6, 2, 5, 1));
     }
+*/
 
     @Override
     public String getColor() {
