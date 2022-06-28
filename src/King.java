@@ -13,10 +13,13 @@ public class King extends ChessPiece {
         int iDeltaX = toColumn - column;
         int iDeltaY = toLine - line;
 
-        if (!isRunningInPlace(iDeltaX, iDeltaY) && chessBoard.checkPos(toLine)
-                && chessBoard.checkPos(toColumn)) {
-            if ((iDeltaX == 0 && Math.abs(iDeltaY) == 1) || (Math.abs(iDeltaX) == 1 && iDeltaY == 0)
-                    || (Math.abs(iDeltaX) == 1 && Math.abs(iDeltaY) == 1)) return true;
+        if (!isRunningInPlace(iDeltaX, iDeltaY) && isInField(chessBoard, line, column, toLine, toColumn)
+                && chessBoard.board[line][column] != null && equalsColor(chessBoard, line, column)) {
+            if (((iDeltaX == 0 && Math.abs(iDeltaY) == 1) || (Math.abs(iDeltaX) == 1 && iDeltaY == 0)
+                    || (Math.abs(iDeltaX) == 1 && Math.abs(iDeltaY) == 1))
+                    && (chessBoard.board[toLine][toColumn] == null
+                    || (chessBoard.board[toLine][toColumn] != null && !equalsColor(chessBoard, toLine, toColumn))))
+                return true;
             else return false;
         } else return false;
     }

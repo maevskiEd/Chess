@@ -13,10 +13,13 @@ public class Queen extends ChessPiece {
         int iDeltaX = toColumn - column;
         int iDeltaY = toLine - line;
 
-        if (!isRunningInPlace(iDeltaX,iDeltaY) && chessBoard.checkPos(toLine)
-                && chessBoard.checkPos(toColumn)) {
-            if ((Math.abs(iDeltaX) == Math.abs(iDeltaY)) || (iDeltaX == 0 && iDeltaY != 0)
-                    || (iDeltaX != 0 && iDeltaY == 0)) return true;
+        if (!isRunningInPlace(iDeltaX, iDeltaY) && isInField(chessBoard, line, column, toLine, toColumn)
+                && chessBoard.board[line][column] != null && equalsColor(chessBoard, line, column)) {
+            if (((Math.abs(iDeltaX) == Math.abs(iDeltaY)) || (iDeltaX == 0 && iDeltaY != 0)
+                    || (iDeltaX != 0 && iDeltaY == 0)) && checkPath(chessBoard, line, column, toLine, toColumn)
+                    && (chessBoard.board[toLine][toColumn] == null
+                    || (chessBoard.board[toLine][toColumn] != null && !equalsColor(chessBoard, toLine, toColumn))))
+                return true;
             else return false;
         } else return false;
     }
@@ -25,6 +28,19 @@ public class Queen extends ChessPiece {
     String getSymbol() {
         return "Q";
     }
+
+    boolean checkPath(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
+        int iDeltaX = Math.abs(toColumn - column);
+        int iDeltaY = Math.abs(toLine - line);
+        int iter = (iDeltaX == iDeltaY) ? iDeltaX : iDeltaX + iDeltaY;
+        int vektorX = (toColumn - column) / iter;
+        int vektorY = (toLine - line) / iter;
+
+        if ((iDeltaX == 0 && iDeltaY == 1) || (iDeltaX == 1 && iDeltaY == 0)
+                || (iDeltaX == 1 && iDeltaY == 1)) return true;
+        for (int i = 1; i < iter; i++) {
+            if (chessBoard.board[line + i * vektorY][column + i * vektorX] != null) return false;
+        }
+        return true;
+    }
 }
-
-
