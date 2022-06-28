@@ -35,11 +35,7 @@ public class King extends ChessPiece {
             for (int i = 0; i <= 7; i++) {
                 for (int j = 0; j <= 7; j++) {
                     if (board.board[i][j] != null && board.board[i][j].getColor().equals(board.nowPlayerColor())) {
-                        System.out.println(board.board[i][j] + ", " + board.nowPlayer + ": " + line + ", " + column);
-                        System.out.println(board.board[i][j].getSymbol() + " " + (board.board[i][j] != null) + " "
-                                + (!equalsColor(board, i, j)) + " " + board.board[i][j].canMoveToPosition(board, i, j, line, column));
                         if (board.board[i][j].canMoveToPosition(board, i, j, line, column)) {
-                            System.out.println(board.board[i][j].getSymbol() + " " + i + " " + j + " " + line + " " + column + "YES");
                             board.nowPlayer = board.nowPlayerColor().equals("White") ? "Black" : "White";
                             if (board.board[i][j].getSymbol().equals("P") && j == column) return false;
                             return true;

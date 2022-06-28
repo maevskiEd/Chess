@@ -8,7 +8,6 @@ public class Main {
         board.board[0][0] = new Rook("White");
         board.board[0][1] = new Horse("White");
         board.board[0][2] = new Bishop("White");
-        board.board[3][1] = new Bishop("Black");
         board.board[0][3] = new Queen("White");
         board.board[0][4] = new King("White");
         board.board[0][5] = new Bishop("White");
@@ -17,7 +16,7 @@ public class Main {
         board.board[1][0] = new Pawn("White");
         board.board[1][1] = new Pawn("White");
         board.board[1][2] = new Pawn("White");
-//        board.board[1][3] = new Pawn("White");
+        board.board[1][3] = new Pawn("White");
         board.board[1][4] = new Pawn("White");
         board.board[1][5] = new Pawn("White");
         board.board[1][6] = new Pawn("White");

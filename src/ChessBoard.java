@@ -17,8 +17,6 @@ public class ChessBoard {
 
             if (board[startLine][startColumn].getSymbol().equals("K")
                     && new King(nowPlayer).isUnderAttack(this,endLine,endColumn)) {
-                System.out.println("K color: " + nowPlayer + " " + startLine + " " + startColumn + " " + endLine
-                        + " " + endColumn);
                 return false;
             }
 
