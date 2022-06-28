@@ -71,7 +71,7 @@ public class Main {
                     }
                 } else if (s.equals("castling7")) {
 //                    if (board.castling7()) {
-                      if (board.castling0()) {
+                      if (board.castling7()) {
                         System.out.println("Рокировка удалась");
                         board.printBoard();
                     } else {

@@ -24,6 +24,9 @@ abstract public class ChessPiece {
         return chessBoard.checkPos(line) && chessBoard.checkPos(column) && chessBoard.checkPos(toLine)
                 && chessBoard.checkPos(toColumn);
     }
+    boolean isInField(ChessBoard chessBoard, int line, int column){
+        return chessBoard.checkPos(line) && chessBoard.checkPos(column);
+    }
 
     boolean equalsColor(ChessBoard chessBoard, int line, int column){
         return chessBoard.nowPlayerColor().equals(chessBoard.board[line][column].getColor());
