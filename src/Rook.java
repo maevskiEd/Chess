@@ -14,11 +14,11 @@ public class Rook extends ChessPiece {
         int iDeltaY = toLine - line;
 
         if (!isRunningInPlace(iDeltaX, iDeltaY) && isInField(chessBoard, line, column, toLine, toColumn)
-                && chessBoard.board[line][column] != null && equalsColor(chessBoard, line, column)) {
-            if (((iDeltaX == 0 && iDeltaY != 0) || (iDeltaX != 0 && iDeltaY == 0))
-                    && checkPath(chessBoard, line, column, toLine, toColumn)
-                    && (chessBoard.board[toLine][toColumn] == null
-                    || (chessBoard.board[toLine][toColumn] != null && !equalsColor(chessBoard, toLine, toColumn)))) return true;
+                && chessBoard.board[line][column] != null && equalsColor(chessBoard, line, column)
+                && ((iDeltaX == 0 && iDeltaY != 0) || (iDeltaX != 0 && iDeltaY == 0))) {
+            if (checkPath(chessBoard, line, column, toLine, toColumn) && (chessBoard.board[toLine][toColumn] == null
+                    || (chessBoard.board[toLine][toColumn] != null && !equalsColor(chessBoard, toLine, toColumn))))
+                return true;
             else return false;
         } else return false;
     }

@@ -10,6 +10,12 @@ public class Bishop extends ChessPiece {
 
     @Override
     boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
+        System.out.println(chessBoard.board[line][column].getSymbol() + chessBoard.board[line][column].getColor() + ": "
+                + line + ", " + column + ", " + toLine + ", " + toColumn);
+        System.out.println(":" + !isRunningInPlace(line, column, toLine, toColumn) + " "
+                + isInField(chessBoard, line, column, toLine, toColumn) + " "
+                + (chessBoard.board[line][column] != null) + " " + equalsColor(chessBoard, line, column) + " "
+                + (Math.abs(toColumn - column) == Math.abs(toLine - line)));
         if (!isRunningInPlace(line, column, toLine, toColumn) && isInField(chessBoard, line, column, toLine, toColumn)
                 && chessBoard.board[line][column] != null && equalsColor(chessBoard, line, column)
                 && Math.abs(toColumn - column) == Math.abs(toLine - line)) {

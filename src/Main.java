@@ -8,6 +8,7 @@ public class Main {
         board.board[0][0] = new Rook("White");
         board.board[0][1] = new Horse("White");
         board.board[0][2] = new Bishop("White");
+        board.board[3][1] = new Bishop("Black");
         board.board[0][3] = new Queen("White");
         board.board[0][4] = new King("White");
         board.board[0][5] = new Bishop("White");
@@ -16,7 +17,7 @@ public class Main {
         board.board[1][0] = new Pawn("White");
         board.board[1][1] = new Pawn("White");
         board.board[1][2] = new Pawn("White");
-        board.board[1][3] = new Pawn("White");
+//        board.board[1][3] = new Pawn("White");
         board.board[1][4] = new Pawn("White");
         board.board[1][5] = new Pawn("White");
         board.board[1][6] = new Pawn("White");
@@ -46,36 +47,36 @@ public class Main {
         ChessBoard board = buildBoard();
         Scanner scanner = new Scanner(System.in);
         System.out.println("""
-               Чтобы проверить игру надо вводить команды:
-               'exit' - для выхода
-               'replay' - для перезапуска игры
-               'castling0' или 'castling7' - для рокировки по соответствующей линии
-               'move 1 1 2 3' - для передвижения фигуры с позиции 1 1 на 2 3(поле это двумерный массив от 0 до 7)
-               Проверьте могут ли фигуры ходить друг сквозь друга, корректно ли съедают друг друга, можно ли поставить шах и сделать рокировку?""");
+               Р§С‚РѕР±С‹ РїСЂРѕРІРµСЂРёС‚СЊ РёРіСЂСѓ РЅР°РґРѕ РІРІРѕРґРёС‚СЊ РєРѕРјР°РЅРґС‹:
+               'exit' - РґР»СЏ РІС‹С…РѕРґР°
+               'replay' - РґР»СЏ РїРµСЂРµР·Р°РїСѓСЃРєР° РёРіСЂС‹
+               'castling0' РёР»Рё 'castling7' - РґР»СЏ СЂРѕРєРёСЂРѕРІРєРё РїРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµР№ Р»РёРЅРёРё
+               'move 1 1 2 3' - РґР»СЏ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ С„РёРіСѓСЂС‹ СЃ РїРѕР·РёС†РёРё 1 1 РЅР° 2 3(РїРѕР»Рµ СЌС‚Рѕ РґРІСѓРјРµСЂРЅС‹Р№ РјР°СЃСЃРёРІ РѕС‚ 0 РґРѕ 7)
+               РџСЂРѕРІРµСЂСЊС‚Рµ РјРѕРіСѓС‚ Р»Рё С„РёРіСѓСЂС‹ С…РѕРґРёС‚СЊ РґСЂСѓРі СЃРєРІРѕР·СЊ РґСЂСѓРіР°, РєРѕСЂСЂРµРєС‚РЅРѕ Р»Рё СЃСЉРµРґР°СЋС‚ РґСЂСѓРі РґСЂСѓРіР°, РјРѕР¶РЅРѕ Р»Рё РїРѕСЃС‚Р°РІРёС‚СЊ С€Р°С… Рё СЃРґРµР»Р°С‚СЊ СЂРѕРєРёСЂРѕРІРєСѓ?""");
         System.out.println();
         board.printBoard();
         while (true) {
             String s = scanner.nextLine();
             if (s.equals("exit")) break;
             else if (s.equals("replay")) {
-                System.out.println("Заново");
+                System.out.println("Р—Р°РЅРѕРІРѕ");
                 board = buildBoard();
                 board.printBoard();
             } else {
                 if (s.equals("castling0")) {
                     if (board.castling0()) {
-                        System.out.println("Рокировка удалась");
+                        System.out.println("Р РѕРєРёСЂРѕРІРєР° СѓРґР°Р»Р°СЃСЊ");
                         board.printBoard();
                     } else {
-                        System.out.println("Рокировка не удалась");
+                        System.out.println("Р РѕРєРёСЂРѕРІРєР° РЅРµ СѓРґР°Р»Р°СЃСЊ");
                     }
                 } else if (s.equals("castling7")) {
 //                    if (board.castling7()) {
                       if (board.castling7()) {
-                        System.out.println("Рокировка удалась");
+                        System.out.println("Р РѕРєРёСЂРѕРІРєР° СѓРґР°Р»Р°СЃСЊ");
                         board.printBoard();
                     } else {
-                        System.out.println("Рокировка не удалась");
+                        System.out.println("Р РѕРєРёСЂРѕРІРєР° РЅРµ СѓРґР°Р»Р°СЃСЊ");
                     }
                 } else if (s.contains("move")) {
                     String[] a = s.split(" ");
@@ -85,11 +86,11 @@ public class Main {
                         int toLine = Integer.parseInt(a[3]);
                         int toColumn = Integer.parseInt(a[4]);
                         if (board.moveToPosition(line, column, toLine, toColumn)) {
-                            System.out.println("Успешно передвинулись");
+                            System.out.println("РЈСЃРїРµС€РЅРѕ РїРµСЂРµРґРІРёРЅСѓР»РёСЃСЊ");
                             board.printBoard();
-                        } else System.out.println("Передвижение не удалось");
+                        } else System.out.println("РџРµСЂРµРґРІРёР¶РµРЅРёРµ РЅРµ СѓРґР°Р»РѕСЃСЊ");
                     } catch (Exception e) {
-                        System.out.println("Вы что-то ввели не так, попробуйте ещё раз");
+                        System.out.println("Р’С‹ С‡С‚Рѕ-С‚Рѕ РІРІРµР»Рё РЅРµ С‚Р°Рє, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·");
                     }
 
                 }

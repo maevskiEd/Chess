@@ -15,6 +15,13 @@ public class ChessBoard {
 
             if (!nowPlayer.equals(board[startLine][startColumn].getColor())) return false;
 
+            if (board[startLine][startColumn].getSymbol().equals("K")
+                    && new King(nowPlayer).isUnderAttack(this,endLine,endColumn)) {
+                System.out.println("K color: " + nowPlayer + " " + startLine + " " + startColumn + " " + endLine
+                        + " " + endColumn);
+                return false;
+            }
+
             if (board[startLine][startColumn].canMoveToPosition(this, startLine, startColumn, endLine, endColumn)) {
 
                 if (board[startLine][startColumn].getSymbol().equals("K") ||  // check position for castling
@@ -32,8 +39,6 @@ public class ChessBoard {
     }
 
     public void printBoard() {  //print board in console
-        System.out.println("Turn " + nowPlayer);
-        System.out.println();
         System.out.println("Player 2(Black)");
         System.out.println();
         System.out.println("\t0\t1\t2\t3\t4\t5\t6\t7");
@@ -46,10 +51,13 @@ public class ChessBoard {
                     System.out.print(board[i][j].getSymbol() + board[i][j].getColor().substring(0, 1).toLowerCase() + "\t");
                 }
             }
-            System.out.println();
-            System.out.println();
+            System.out.println(i);
+            if (i == 0) System.out.println("\t0\t1\t2\t3\t4\t5\t6\t7");
+            else System.out.println();
         }
         System.out.println("Player 1(White)");
+        System.out.print("Turn " + nowPlayer + ":>");
+//        System.out.println();
     }
 
     public boolean checkPos(int pos) {
